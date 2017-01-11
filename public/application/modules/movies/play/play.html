@@ -1,0 +1,5 @@
+<div ng-if="$ctrl.viewParams.currentMovie">
+    <full-screen-video-directive
+            url="{{$ctrl.viewParams.currentMovie['contents'][0]['url']}}"
+    ></full-screen-video-directive>
+</div>

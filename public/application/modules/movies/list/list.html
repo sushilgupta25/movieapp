@@ -1,0 +1,28 @@
+<div ng-cloak>
+    <md-toolbar class="">
+        <div class="md-toolbar-tools">
+            <h2 class="md-flex">Accedo Movies</h2>
+        </div>
+    </md-toolbar>
+
+
+    <div class="alert alert-message">
+        {{$ctrl.viewParams.messageService.handleMessage('apiError').get()}}
+    </div>
+    <div ng-if="$ctrl.viewParams.movieData">
+        <div slide-handler-directive="">
+            <slick class="slider single-item" arrow="true" current-index="index" responsive="breakpoints"
+                   slides-to-show=5 slides-to-scroll=1 on-after-change="$ctrl.slick.onAfterChange(selection,index)">
+                <div ng-repeat="entries in $ctrl.viewParams.movieData.entries">
+                    <a ui-sref="videos.list.play({_id:entries.id})">
+                        <img ng-src="{{ entries.images[0].url }}" width="{{ entries.images[0].width }}"
+                             height="{{ entries.images[0].height }}" title="entries.title"/>
+                    </a>
+                </div>
+            </slick>
+        </div>
+    </div>
+    <div ui-view=""></div>
+
+
+</div>
